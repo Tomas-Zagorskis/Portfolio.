@@ -40,7 +40,7 @@ export default function Intro() {
 							delay: 0.1,
 							duration: 0.7,
 						}}
-						className='text-6xl absolute bottom-[-0.5rem] right-[-1.5rem] -scale-x-100'>
+						className='text-6xl absolute bottom-[-0.5rem] right-[-1.5rem] !-scale-x-100'>
 						👋🏼
 					</motion.span>
 				</div>
@@ -50,8 +50,9 @@ export default function Intro() {
 				initial={{ opacity: 0, y: 100 }}
 				animate={{ opacity: 1, y: 0 }}>
 				<strong>Hello, I'm Tomas.</strong> I'm a skilled{' '}
-				<strong>front-end developer</strong> with extensive experience in{' '}
-				<u>NodeJS</u>, <u>Java</u> and <u>C#</u> backend development.
+				<strong>frontend developer</strong> with extensive experience in{' '}
+				<u>NodeJS</u>, <u>Java</u> and <u>C#</u>{' '}
+				<strong>backend development</strong>.
 			</motion.h1>
 
 			<motion.div
