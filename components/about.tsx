@@ -26,7 +26,7 @@ export default function About() {
 				My journey in <strong>IT</strong> began with education from reputable
 				institutions like <u>CodeAcademy</u> and{' '}
 				<u>The Rolling Scopes School</u>, where I honed my skills in both
-				<strong>front-end</strong> and <strong>back-end</strong> development.
+				<strong> front-end</strong> and <strong>back-end</strong> development.
 				These experiences allowed me to craft <em>seamless user experiences</em>{' '}
 				and <em>intuitive interfaces</em> for various landing pages.
 			</p>

@@ -50,8 +50,8 @@ export default function Intro() {
 				initial={{ opacity: 0, y: 100 }}
 				animate={{ opacity: 1, y: 0 }}>
 				<strong>Hello, I'm Tomas.</strong> I'm a skilled{' '}
-				<strong>frontend developer</strong> with extensive experience in{' '}
-				<u>NodeJS</u>, <u>Java</u> and <u>C#</u>{' '}
+				<strong>frontend developer</strong> (<u>React</u>, <u>Angular</u>) with
+				extensive experience in <u>NodeJS</u>, <u>Java</u> and <u>C#</u>{' '}
 				<strong>backend development</strong>.
 			</motion.h1>
 
