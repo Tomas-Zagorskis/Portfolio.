@@ -1,17 +1,31 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BsArrowRight, BsLinkedin } from 'react-icons/bs';
-import { HiDownload } from 'react-icons/hi';
-import { FaGithubSquare } from 'react-icons/fa';
 import Image from 'next/image';
-
-import profilePhoto from '@/public/photo.png';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { BsArrowRight, BsLinkedin } from 'react-icons/bs';
+import { FaGithubSquare } from 'react-icons/fa';
+import { HiDownload } from 'react-icons/hi';
+import { useInView } from 'react-intersection-observer';
+
+import { useActiveSectionContext } from '@/context/active-section';
+import profilePhoto from '@/public/photo.png';
 
 export default function Intro() {
+	const { ref, inView } = useInView({
+		threshold: 0.5,
+	});
+	const { setActiveSection } = useActiveSectionContext();
+
+	useEffect(() => {
+		if (inView) {
+			setActiveSection('Home');
+		}
+	}, [inView]);
 	return (
 		<section
+			ref={ref}
 			id='home'
 			className='mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-96'>
 			<div className='flex items-center justify-center'>
