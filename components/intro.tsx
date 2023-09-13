@@ -3,26 +3,16 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
 import { BsArrowRight, BsLinkedin } from 'react-icons/bs';
 import { FaGithubSquare } from 'react-icons/fa';
 import { HiDownload } from 'react-icons/hi';
-import { useInView } from 'react-intersection-observer';
 
-import { useActiveSectionContext } from '@/context/active-section';
+import { useSectionInView } from '@/lib/hooks';
 import profilePhoto from '@/public/photo.png';
 
 export default function Intro() {
-	const { ref, inView } = useInView({
-		threshold: 0.5,
-	});
-	const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
+	const { ref } = useSectionInView('Home', 0.5);
 
-	useEffect(() => {
-		if (inView && timeOfLastClick < Date.now() - 1000) {
-			setActiveSection('Home');
-		}
-	}, [inView]);
 	return (
 		<section
 			ref={ref}
