@@ -12,10 +12,10 @@ export default function Projects() {
 	const { ref, inView } = useInView({
 		threshold: 0.5,
 	});
-	const { setActiveSection } = useActiveSectionContext();
+	const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
 
 	useEffect(() => {
-		if (inView) {
+		if (inView && timeOfLastClick < Date.now() - 1000) {
 			setActiveSection('Projects');
 		}
 	}, [inView]);
