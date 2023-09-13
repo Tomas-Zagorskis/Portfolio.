@@ -31,11 +31,19 @@ export default function Header() {
 										'text-gray-950': link.name === activeSection,
 									},
 								)}
-								href={link.hash}>
+								href={link.hash}
+								onClick={() => setActiveSection(link.name)}>
 								{link.name}
 
 								{link.name === activeSection && (
-									<span className='bg-gray-100 rounded-full absolute inset-0 -z-10'></span>
+									<motion.span
+										className='bg-gray-100 rounded-full absolute inset-0 -z-10'
+										layoutId='activeSection'
+										transition={{
+											type: 'spring',
+											stiffness: 380,
+											damping: 30,
+										}}></motion.span>
 								)}
 							</Link>
 						</motion.li>
