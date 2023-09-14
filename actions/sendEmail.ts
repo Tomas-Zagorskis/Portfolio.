@@ -20,8 +20,9 @@ export const sendEmail = async (formData: FormData) => {
 		return { error: 'Invalid message' };
 	}
 
+	let data;
 	try {
-		await resend.emails.send({
+		data = await resend.emails.send({
 			from: 'Contact Form <onboarding@resend.dev>',
 			to: 'tomzagos@gmail.com',
 			subject: 'Message from Portfolio contact form',
@@ -34,4 +35,6 @@ export const sendEmail = async (formData: FormData) => {
 	} catch (error) {
 		return { error: getErrorMessage(error) };
 	}
+
+	return { data };
 };
