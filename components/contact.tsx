@@ -11,6 +11,16 @@ import SubmitBtn from './submit-btn';
 export default function Contact() {
 	const { ref } = useSectionInView('Contact');
 
+	const handleEmailSend = async (formData: FormData) => {
+		const { error } = await sendEmail(formData);
+
+		if (error) {
+			toast.error(error);
+			return;
+		}
+		toast.success('Email sent successfully!');
+	};
+
 	return (
 		<motion.section
 			initial={{ opacity: 0 }}
@@ -29,17 +39,7 @@ export default function Contact() {
 				or through this form.
 			</p>
 
-			<form
-				className='mt-10 flex flex-col'
-				action={async formData => {
-					const { data, error } = await sendEmail(formData);
-
-					if (error) {
-						toast.error(error);
-						return;
-					}
-					toast.success('Email sent successfully!');
-				}}>
+			<form className='mt-10 flex flex-col' action={handleEmailSend}>
 				<input
 					type='email'
 					name='senderEmail'
