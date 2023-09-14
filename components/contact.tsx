@@ -19,6 +19,7 @@ export default function Contact() {
 			return;
 		}
 		toast.success('Email sent successfully!');
+		(document.getElementById('contactForm') as HTMLFormElement).reset();
 	};
 
 	return (
@@ -39,7 +40,10 @@ export default function Contact() {
 				or through this form.
 			</p>
 
-			<form className='mt-10 flex flex-col' action={handleEmailSend}>
+			<form
+				id='contactForm'
+				className='mt-10 flex flex-col'
+				action={handleEmailSend}>
 				<input
 					type='email'
 					name='senderEmail'
