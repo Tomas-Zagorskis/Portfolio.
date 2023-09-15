@@ -14,7 +14,7 @@ export function useSectionInView(sectionName: SectionName, threshold = 0.75) {
 		if (inView && timeOfLastClick < Date.now() - 1000) {
 			setActiveSection(sectionName);
 		}
-	}, [inView, timeOfLastClick]);
+	}, [inView, timeOfLastClick, sectionName, setActiveSection]);
 
 	return { ref };
 }

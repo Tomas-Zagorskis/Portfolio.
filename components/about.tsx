@@ -18,13 +18,13 @@ export default function About() {
 			id='about'>
 			<SectionHeading>About me</SectionHeading>
 			<p className='mb-4'>
-				I'm a dedicated individual with a background in&nbsp;
+				I&rsquo;m a dedicated individual with a background in&nbsp;
 				<strong>
 					<em>chemistry</em>
 				</strong>
 				&nbsp;who has always harbored a passion for&nbsp;<u>programming</u>.
 				This drive led me to make a significant career shift, transitioning into
-				the field of <strong>web and software development</strong>. I'm
+				the field of <strong>web and software development</strong>. I&rsquo;m
 				characterized by my <u>diligence</u>, <u>enthusiasm</u>, and{' '}
 				<u>motivation</u> in the realm of information technology.
 			</p>
@@ -50,8 +50,9 @@ export default function About() {
 				enriched my understanding of the ever-evolving IT landscape.
 			</p>
 			<p>
-				<strong>I'm open to offers</strong> where I can continue to gain
-				experience as a <u>web developer</u>. <strong>Let's connect!</strong>
+				<strong>I&rsquo;m open to offers</strong> where I can continue to gain
+				experience as a <u>web developer</u>.{' '}
+				<strong>Let&rsquo;s connect!</strong>
 			</p>
 		</motion.section>
 	);
