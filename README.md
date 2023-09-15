@@ -14,4 +14,4 @@ This is a [Next.js](https://nextjs.org/) project.
 
 ## Deployed on Vercel
 
-### [Tomas | Portfolio](https://tomas-portfolio-mu.vercel.app/)
+### [Tomas | Portfolio](https://tomas-zagorskis.vercel.app/)
