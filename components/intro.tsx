@@ -71,34 +71,38 @@ export default function Intro() {
 				}}>
 				<Link
 					href='#contact'
+					draggable={false}
 					onClick={() => {
 						setActiveSection('Contact');
 						setTimeOfLastClick(Date.now());
 					}}
-					className='group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition'>
+					className='group bg-gray-900 text-white select-none px-7 py-3 flex items-center justify-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition dark:border dark:border-white/10 '>
 					Contact me here{' '}
-					<BsArrowRight className='opacity-70 group-hover:translate-x-1 transition' />
+					<BsArrowRight className='opacity-70 select-none group-hover:translate-x-1 transition' />
 				</Link>
 
 				<a
 					href='/Zagorskis CV.pdf'
+					draggable={false}
 					download
-					className='group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition borderBlack dark:bg-white/10'>
+					className='group bg-white px-7 py-3 select-none flex items-center justify-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition borderBlack dark:bg-white/10'>
 					Download CV{' '}
-					<HiDownload className='opacity-60 group-hover:translate-y-1 transition' />
+					<HiDownload className='opacity-60 select-none group-hover:translate-y-1 transition' />
 				</a>
 
 				<a
 					href='https://www.linkedin.com/in/tomas-zagorskis-8400528b'
+					draggable={false}
 					target='_blank'
-					className='bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
+					className='bg-white p-4 text-gray-700 flex items-center justify-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
 					<BsLinkedin />
 				</a>
 
 				<a
 					href='https://github.com/Tomas-Zagorskis'
+					draggable={false}
 					target='_blank'
-					className='bg-white p-4 text-gray-700 text-[1.35rem] flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
+					className='bg-white p-4 text-gray-700 text-[1.35rem] flex items-center justify-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
 					<FaGithubSquare />
 				</a>
 			</motion.div>

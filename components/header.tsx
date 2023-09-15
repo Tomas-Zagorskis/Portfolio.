@@ -27,19 +27,19 @@ export default function Header() {
 							animate={{ y: 0, opacity: 1 }}>
 							<Link
 								className={cslx(
-									'flex w-full items-center justify-center p-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300',
+									'flex w-full items-center justify-center p-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300 select-none',
 									{
-										'text-gray-950 dark:text-gray-300':
+										'text-gray-950 dark:text-gray-200':
 											link.name === activeSection,
 									},
 								)}
+								draggable={false}
 								href={link.hash}
 								onClick={() => {
 									setActiveSection(link.name);
 									setTimeOfLastClick(Date.now());
 								}}>
 								{link.name}
-
 								{link.name === activeSection && (
 									<motion.span
 										className='bg-gray-200 rounded-full absolute inset-0 -z-10 dark:bg-gray-700'

@@ -36,7 +36,7 @@ export default function Skills() {
 						viewport={{ once: true }}
 						custom={index}
 						key={skill}
-						className='bg-white borderBlack rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80'>
+						className='bg-white borderBlack hover:!scale-[1.13] hover:font-bold dark:hover:!text-white cursor-default rounded-xl px-5 py-3  dark:bg-white/10 dark:text-white/80'>
 						{skill}
 					</motion.li>
 				))}
