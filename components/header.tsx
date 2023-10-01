@@ -1,6 +1,5 @@
 'use client';
 
-import cslx from 'clsx';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -26,13 +25,11 @@ export default function Header() {
 							initial={{ y: -100, opacity: 0 }}
 							animate={{ y: 0, opacity: 1 }}>
 							<Link
-								className={cslx(
-									'flex w-full items-center justify-center p-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300 select-none',
-									{
-										'text-gray-950 dark:text-gray-300':
-											link.name === activeSection,
-									},
-								)}
+								className={`flex w-full items-center justify-center p-3 hover:text-gray-950 transition dark:text-gray-500 dark:hover:text-gray-300 select-none ${
+									link.name === activeSection
+										? 'text-gray-950 dark:text-gray-300'
+										: ''
+								}`}
 								draggable={false}
 								href={link.hash}
 								onClick={() => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { PiCertificate } from 'react-icons/pi';
+import { PiCertificateDuotone } from 'react-icons/pi';
 import { FcGraduationCap } from 'react-icons/fc';
 import ImageGeneratorAiImg from '@/public/ImageGeneratorAI.png';
 import PromptopiaImg from '@/public/Promptopia.png';
@@ -39,7 +39,7 @@ export const experiencesData = [
 		location: 'Kaunas',
 		description:
 			'During my one-week immersion at Xplicity Company, I had the exciting opportunity to contribute to a cutting-edge project.',
-		icon: React.createElement(PiCertificate),
+		icon: React.createElement(PiCertificateDuotone),
 		date: 'Aug 2023',
 	},
 	{
@@ -47,7 +47,7 @@ export const experiencesData = [
 		location: 'online',
 		description:
 			'I studied several courses and got certifications in Front-end, React, NodeJS',
-		icon: React.createElement(PiCertificate),
+		icon: React.createElement(PiCertificateDuotone),
 		date: 'Feb 2022 - Aug 2023',
 	},
 	{
@@ -55,7 +55,7 @@ export const experiencesData = [
 		location: 'hybrid, Kaunas',
 		description:
 			'A project with an HR support dashboard that simplified data management, chart generation and annual statistics using Excel files.',
-		icon: React.createElement(PiCertificate),
+		icon: React.createElement(PiCertificateDuotone),
 		date: 'Oct 2022 - Dec 2022',
 	},
 	{
