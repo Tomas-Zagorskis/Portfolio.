@@ -3,6 +3,7 @@ import { PiCertificateDuotone } from 'react-icons/pi';
 import { FcGraduationCap } from 'react-icons/fc';
 import ImageGeneratorAiImg from '@/public/ImageGeneratorAI.png';
 import PromptopiaImg from '@/public/Promptopia.png';
+import CarHub from '@/public/carHub.png';
 import FoodOrderImg from '@/public/FoodOrder.png';
 import eTickets from '@/public/eTickets.png';
 
@@ -111,6 +112,15 @@ export const projectsData = [
 		imageUrl: FoodOrderImg,
 		projectUrl: 'https://order-react-food.vercel.app/',
 		gitHubUrl: 'https://github.com/Tomas-Zagorskis/food-order',
+	},
+	{
+		title: 'CarHub',
+		description:
+			'CarHub is a web application that allows users to browse and find cars for rent',
+		tags: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Vercel'],
+		imageUrl: CarHub,
+		projectUrl: 'https://car-hub-alpha.vercel.app/',
+		gitHubUrl: 'https://github.com/Tomas-Zagorskis/car-showcase',
 	},
 ] as const;
 
