@@ -4,6 +4,7 @@ import { FcGraduationCap } from 'react-icons/fc';
 import ImageGeneratorAiImg from '@/public/ImageGeneratorAI.png';
 import PromptopiaImg from '@/public/Promptopia.png';
 import FoodOrderImg from '@/public/FoodOrder.png';
+import eTickets from '@/public/eTickets.png';
 
 export const links = [
 	{
@@ -77,11 +78,22 @@ export const experiencesData = [
 
 export const projectsData = [
 	{
+		title: 'eTickets',
+		description:
+			'eTickets is a modern e-commerce application that allows users to buy tickets for movies.',
+		tags: ['C#', '.Net', 'Razor', 'Azure'],
+		imageUrl: eTickets,
+		projectUrl: 'https://e-movie-tickets.azurewebsites.net/',
+		gitHubUrl: 'https://github.com/Tomas-Zagorskis/eTickets-aspnet-mvc',
+	},
+	{
 		title: 'Image Generator AI',
 		description:
 			'My role involved working on an innovative application that harnesses the power of AI technology to convert spoken words into text and then generate images using AI assistance.',
 		tags: ['Angular', 'C#', '.Net', 'Azure'],
 		imageUrl: ImageGeneratorAiImg,
+		projectUrl: null,
+		gitHubUrl: null,
 	},
 	{
 		title: 'Promptopia',
@@ -89,12 +101,16 @@ export const projectsData = [
 			'Promptopia is an open-source AI prompting tool for modern world to discover, create and share creative prompts',
 		tags: ['React', 'TypeScript', 'Next.js', 'Tailwind', 'Firebase', 'MongoDB'],
 		imageUrl: PromptopiaImg,
+		projectUrl: 'https://ai-promp-topia.vercel.app/',
+		gitHubUrl: 'https://github.com/Tomas-Zagorskis/Promptopia',
 	},
 	{
 		title: 'Food Order',
 		description: 'Public web application for food orders.',
 		tags: ['React', 'Firebase'],
 		imageUrl: FoodOrderImg,
+		projectUrl: 'https://order-react-food.vercel.app/',
+		gitHubUrl: 'https://github.com/Tomas-Zagorskis/food-order',
 	},
 ] as const;
 
