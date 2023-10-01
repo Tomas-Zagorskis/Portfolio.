@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRef } from 'react';
 
 import { projectsData } from '@/lib/data';
+import { FaExternalLinkAlt, FaGithubSquare } from 'react-icons/fa';
 
 type ProjectProps = (typeof projectsData)[number];
 
@@ -13,6 +14,8 @@ export default function Project({
 	description,
 	tags,
 	imageUrl,
+	projectUrl,
+	gitHubUrl,
 }: ProjectProps) {
 	const ref = useRef<HTMLDivElement>(null);
 	const { scrollYProgress } = useScroll({
@@ -30,13 +33,13 @@ export default function Project({
 				opacity: opacityProgress,
 			}}
 			className='group mb-3 sm:mb-8 last:mb-0'>
-			<section className='bg-gray-100 max-w-[42rem] border border-black/5 overflow-hidden rounded-lg sm:pr-8 relative sm:h-[20rem] sm:group-even:pl-8 hover:bg-gray-200 transition dark:text-white dark:bg-white/10 dark:hover:bg-white/20'>
+			<section className='bg-gray-100 max-w-[42rem] border border-black/5 overflow-hidden rounded-lg sm:pr-8 relative sm:h-[22rem] sm:group-even:pl-8 hover:bg-gray-200 transition dark:text-white dark:bg-white/10 dark:hover:bg-white/20'>
 				<div className='pt-4 pb-6 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]'>
 					<h3 className='text-2xl'>{title}</h3>
 					<p className='mt-2 leading-relaxed text-gray-700 dark:text-white/70'>
 						{description}
 					</p>
-					<ul className='flex flex-wrap mt-4 gap-2 sm:mt-auto justify-center'>
+					<ul className='flex flex-wrap mt-4 gap-2 justify-center'>
 						{tags.map((tag, index) => (
 							<li
 								key={index}
@@ -45,6 +48,26 @@ export default function Project({
 							</li>
 						))}
 					</ul>
+					<div className='flex gap-4 sm:mt-auto justify-end group-even:justify-start'>
+						{projectUrl && (
+							<a
+								href={projectUrl}
+								draggable={false}
+								target='_blank'
+								className='bg-white py-2 px-8 h-fit text-gray-700 flex items-center justify-center rounded-full focus:scale-105 hover:scale-105 hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
+								<FaExternalLinkAlt />
+							</a>
+						)}
+						{gitHubUrl && (
+							<a
+								href={gitHubUrl}
+								draggable={false}
+								target='_blank'
+								className='bg-white py-2 px-8 h-fit text-gray-700 flex items-center justify-center rounded-full focus:scale-105 hover:scale-105 hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
+								<FaGithubSquare />
+							</a>
+						)}
+					</div>
 				</div>
 				<Image
 					src={imageUrl}
