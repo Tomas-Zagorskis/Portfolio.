@@ -36,22 +36,9 @@ export default function About() {
 				These experiences allowed me to craft <em>seamless user experiences</em>{' '}
 				and <em>intuitive interfaces</em> for various landing pages.
 			</p>
-			<p className='mb-4'>
-				In my most recent venture at <strong>Xplicity</strong> Company, I had
-				the privilege of contributing to a groundbreaking project that leveraged{' '}
-				<u>AI technology</u> to{' '}
-				<strong>convert spoken language into text and generate images</strong>.
-				This endeavor exposed me to a diverse tech stack, including{' '}
-				<u>Angular, C#, and Azure services</u>, offering me insights into{' '}
-				<em>
-					voice recognition, AI transformation, and text-to-image generation
-				</em>
-				. Collaborating with a talented team at <strong>Xplicity</strong>{' '}
-				enriched my understanding of the ever-evolving IT landscape.
-			</p>
 			<p>
 				<strong>I&rsquo;m open to offers</strong> where I can continue to gain
-				experience as a <u>web developer</u>.{' '}
+				experience as a <u>full-stack developer</u>.{' '}
 				<strong>Let&rsquo;s connect!</strong>
 			</p>
 		</motion.section>
