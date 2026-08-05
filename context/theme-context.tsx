@@ -1,13 +1,12 @@
 'use client';
 
 import {
-	useState,
-	useEffect,
 	createContext,
 	ReactNode,
 	useCallback,
 	useContext,
 	useMemo,
+	useSyncExternalStore,
 } from 'react';
 
 type Theme = 'light' | 'dark';
@@ -21,29 +20,45 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
+// The `dark` class on <html> is the single source of truth: the inline script in
+// the root layout sets it before first paint, and this store just reads it back.
+// That avoids both a setState-in-effect and a hydration mismatch.
+const listeners = new Set<() => void>();
+
+function subscribe(onStoreChange: () => void) {
+	listeners.add(onStoreChange);
+	return () => {
+		listeners.delete(onStoreChange);
+	};
+}
+
+function getSnapshot(): Theme {
+	return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+}
+
+// SSR has no <html> to read; the script corrects the class before paint and
+// useSyncExternalStore re-reads the client snapshot after hydration.
+function getServerSnapshot(): Theme {
+	return 'light';
+}
+
+export function setTheme(theme: Theme) {
+	window.localStorage.setItem('theme', theme);
+	document.documentElement.classList.toggle('dark', theme === 'dark');
+	listeners.forEach(listener => listener());
+}
+
 export default function ThemeContextProvider({
 	children,
 }: ThemeContextProviderProps) {
-	const [theme, setTheme] = useState<Theme>('light');
-
-	// The inline script in the root layout already resolved the theme and set the
-	// class before paint, so read that back rather than resolving it a second time.
-	useEffect(() => {
-		// Deliberate: the class is only knowable post-hydration, and deriving it
-		// during render would mismatch the server's 'light' markup. Runs once.
-		// eslint-disable-next-line react-hooks/set-state-in-effect
-		setTheme(
-			document.documentElement.classList.contains('dark') ? 'dark' : 'light',
-		);
-	}, []);
+	const theme = useSyncExternalStore(
+		subscribe,
+		getSnapshot,
+		getServerSnapshot,
+	);
 
 	const toggleTheme = useCallback(() => {
-		setTheme(prev => {
-			const next = prev === 'light' ? 'dark' : 'light';
-			window.localStorage.setItem('theme', next);
-			document.documentElement.classList.toggle('dark', next === 'dark');
-			return next;
-		});
+		setTheme(getSnapshot() === 'light' ? 'dark' : 'light');
 	}, []);
 
 	const value = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
