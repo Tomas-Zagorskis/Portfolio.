@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'react-hot-toast';
 
@@ -10,9 +11,38 @@ import ThemeContextProvider from '@/context/theme-context';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
-	title: 'Tomas | Portfolio',
-	description: 'Tomas is a fresh web developer',
+const siteUrl = 'https://tomas-zagorskis.vercel.app';
+const title = 'Tomas Zagorskis | React Frontend Developer';
+const description =
+	'React frontend developer with around 3 years of experience building data-dense dashboards in React and TypeScript.';
+
+export const metadata: Metadata = {
+	metadataBase: new URL(siteUrl),
+	title,
+	description,
+	authors: [{ name: 'Tomas Zagorskis', url: siteUrl }],
+	keywords: [
+		'Tomas Zagorskis',
+		'React developer',
+		'frontend developer',
+		'TypeScript',
+		'Next.js',
+		'Kaunas',
+		'Lithuania',
+	],
+	openGraph: {
+		title,
+		description,
+		url: siteUrl,
+		siteName: 'Tomas Zagorskis',
+		locale: 'en_US',
+		type: 'website',
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title,
+		description,
+	},
 };
 
 export default function RootLayout({
