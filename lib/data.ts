@@ -1,4 +1,6 @@
 import React from 'react';
+import { CgWorkAlt } from 'react-icons/cg';
+import { MdFactory } from 'react-icons/md';
 import { PiCertificateDuotone } from 'react-icons/pi';
 import { FcGraduationCap } from 'react-icons/fc';
 import ImageGeneratorAiImg from '@/public/ImageGeneratorAI.png';
@@ -35,6 +37,30 @@ export const links = [
 ] as const;
 
 export const experiencesData = [
+	{
+		title: 'Frontend Developer',
+		location: 'Energy Advice, Kaunas',
+		description:
+			'Building energy monitoring dashboards in React and TypeScript, used by over 500 people across more than 20 client companies. Designed a reusable library of 15+ chart components, built GIS map views for metering devices, and integrated the frontend with Kotlin and Quarkus services over GraphQL. I own the RC and production releases.',
+		icon: React.createElement(CgWorkAlt),
+		date: 'Feb 2024 - Present',
+	},
+	{
+		title: 'Shift Engineer',
+		location: 'ACHEMA, Jonava',
+		description:
+			'Led a 20-person shift team in urea fertiliser production, accountable for product quality and continuous output. Held alongside part-time software studies and the developer roles above.',
+		icon: React.createElement(MdFactory),
+		date: 'Feb 2015 - Feb 2024',
+	},
+	{
+		title: 'Full Stack Developer Intern',
+		location: 'Present Connection, Kaunas',
+		description:
+			'Delivered features and resolved defects in HR applications built with React and .NET, working to sprint commitments in an Agile team and taking tickets through review and testing.',
+		icon: React.createElement(CgWorkAlt),
+		date: 'Oct 2023 - Dec 2023',
+	},
 	{
 		title: 'Graduated Xplicity Academy',
 		location: 'Kaunas',
@@ -125,21 +151,29 @@ export const projectsData = [
 ] as const;
 
 export const skillsData = [
+	'React',
+	'TypeScript',
+	'JavaScript',
+	'Next.js',
 	'HTML',
 	'CSS',
-	'JavaScript',
-	'TypeScript',
-	'React',
-	'Angular',
-	'Next.js',
-	'Node.js',
-	'Java',
-	'C#',
-	'.Net',
-	'Git',
+	'SCSS',
 	'Tailwind',
-	'MongoDB',
 	'Redux',
+	'Zustand',
+	'TanStack Query',
 	'GraphQL',
+	'REST APIs',
+	'Vitest',
+	'Jest',
+	'React Testing Library',
+	'Cypress',
+	'Node.js',
+	'Kotlin',
 	'PostgreSQL',
+	'MySQL',
+	'MongoDB',
+	'Git',
+	'Docker',
+	'CI/CD',
 ] as const;
