@@ -55,7 +55,7 @@ export default function Contact() {
 					name='senderEmail'
 					required
 					maxLength={500}
-					className='h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:outline-none dark:focus:bg-opacity-100 transition-all'
+					className='h-14 px-4 rounded-lg borderBlack dark:bg-white/80 dark:outline-hidden dark:focus:bg-white transition-all'
 					placeholder='Your email'
 				/>
 				<label htmlFor='message' className='sr-only'>
@@ -66,7 +66,7 @@ export default function Contact() {
 					name='message'
 					required
 					maxLength={5000}
-					className='h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:outline-none dark:focus:bg-opacity-100 transition-all'
+					className='h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white/80 dark:outline-hidden dark:focus:bg-white transition-all'
 					placeholder='Your message'
 				/>
 				<SubmitBtn />
