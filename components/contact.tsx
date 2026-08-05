@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import toast from 'react-hot-toast';
 
 import { sendEmail } from '@/actions/sendEmail';
@@ -10,6 +11,7 @@ import SubmitBtn from './submit-btn';
 
 export default function Contact() {
 	const { ref } = useSectionInView('Contact');
+	const formRef = useRef<HTMLFormElement>(null);
 
 	const handleEmailSend = async (formData: FormData) => {
 		const { error } = await sendEmail(formData);
@@ -19,7 +21,7 @@ export default function Contact() {
 			return;
 		}
 		toast.success('Email sent successfully!');
-		(document.getElementById('contactForm') as HTMLFormElement).reset();
+		formRef.current?.reset();
 	};
 
 	return (
@@ -41,7 +43,7 @@ export default function Contact() {
 			</p>
 
 			<form
-				id='contactForm'
+				ref={formRef}
 				className='mt-10 flex flex-col dark:text-black'
 				action={handleEmailSend}>
 				<label htmlFor='senderEmail' className='sr-only'>
