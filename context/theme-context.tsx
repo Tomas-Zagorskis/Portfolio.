@@ -5,7 +5,9 @@ import {
 	useEffect,
 	createContext,
 	ReactNode,
+	useCallback,
 	useContext,
+	useMemo,
 } from 'react';
 
 type Theme = 'light' | 'dark';
@@ -24,35 +26,27 @@ export default function ThemeContextProvider({
 }: ThemeContextProviderProps) {
 	const [theme, setTheme] = useState<Theme>('light');
 
+	// The inline script in the root layout already resolved the theme and set the
+	// class before paint, so read that back rather than resolving it a second time.
 	useEffect(() => {
-		const localTheme = window.localStorage.getItem('theme');
-		if (localTheme) {
-			setTheme(localTheme as Theme);
-			if (localTheme === 'dark') {
-				document.documentElement.classList.add('dark');
-			}
-		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			setTheme('dark');
-			document.documentElement.classList.add('dark');
-		}
+		setTheme(
+			document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+		);
 	}, []);
 
-	const toggleTheme = () => {
-		if (theme === 'light') {
-			setTheme('dark');
-			window.localStorage.setItem('theme', 'dark');
-			document.documentElement.classList.add('dark');
-		} else {
-			setTheme('light');
-			window.localStorage.setItem('theme', 'light');
-			document.documentElement.classList.remove('dark');
-		}
-	};
+	const toggleTheme = useCallback(() => {
+		setTheme(prev => {
+			const next = prev === 'light' ? 'dark' : 'light';
+			window.localStorage.setItem('theme', next);
+			document.documentElement.classList.toggle('dark', next === 'dark');
+			return next;
+		});
+	}, []);
+
+	const value = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
 
 	return (
-		<ThemeContext.Provider value={{ theme, toggleTheme }}>
-			{children}
-		</ThemeContext.Provider>
+		<ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 	);
 }
 

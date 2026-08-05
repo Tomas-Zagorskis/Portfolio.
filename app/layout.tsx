@@ -45,13 +45,30 @@ export const metadata: Metadata = {
 	},
 };
 
+// Runs before first paint so dark-mode visitors never see a flash of the light
+// theme. Kept in sync with the toggle in context/theme-context.tsx.
+const themeScript = `
+(function () {
+	try {
+		var stored = localStorage.getItem('theme');
+		var dark = stored
+			? stored === 'dark'
+			: window.matchMedia('(prefers-color-scheme: dark)').matches;
+		if (dark) document.documentElement.classList.add('dark');
+	} catch (e) {}
+})();
+`;
+
 export default function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang='en' className='!scroll-smooth'>
+		<html lang='en' className='!scroll-smooth' suppressHydrationWarning>
+			<head>
+				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
+			</head>
 			<body
 				className={`${inter.className} bg-slate-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-95`}>
 				<div className='bg-[#fbe2e3] absolute top-[-6rem] -z-10 right-[11rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]'></div>
