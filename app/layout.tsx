@@ -64,8 +64,14 @@ export default function RootLayout({
 }: {
 	children: React.ReactNode;
 }) {
+	// data-scroll-behavior: Next 16 no longer overrides scroll-behavior during
+	// navigation unless this is set, which would make route changes animate.
 	return (
-		<html lang='en' className='!scroll-smooth' suppressHydrationWarning>
+		<html
+			lang='en'
+			className='!scroll-smooth'
+			data-scroll-behavior='smooth'
+			suppressHydrationWarning>
 			<head>
 				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
 			</head>

@@ -1,7 +1,4 @@
-import { ImageResponse } from 'next/server';
-
-// Next 13's bundled @vercel/og only builds this route on the edge runtime.
-export const runtime = 'edge';
+import { ImageResponse } from 'next/og';
 
 export const alt = 'Tomas Zagorskis — React Frontend Developer';
 export const size = { width: 1200, height: 630 };

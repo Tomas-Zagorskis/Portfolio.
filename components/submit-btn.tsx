@@ -1,4 +1,6 @@
-import { experimental_useFormStatus as useFormStatus } from 'react-dom';
+'use client';
+
+import { useFormStatus } from 'react-dom';
 import { FaPaperPlane } from 'react-icons/fa';
 
 export default function SubmitBtn() {

@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// Required until Next 14 — Server Actions are still behind a flag on 13.x.
-	// Remove this together with the Next upgrade.
-	experimental: {
-		serverActions: true,
+	images: {
+		// Next 16 narrowed the default to [75]; both <Image> uses request 95.
+		qualities: [75, 95],
 	},
 };
 
