@@ -54,8 +54,10 @@ export default function Project({
 								href={projectUrl}
 								draggable={false}
 								target='_blank'
+								rel='noopener noreferrer'
+								aria-label={`Open the ${title} live site`}
 								className='bg-white py-2 px-8 h-fit text-gray-700 flex items-center justify-center rounded-full focus:scale-105 hover:scale-105 hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
-								<FaExternalLinkAlt />
+								<FaExternalLinkAlt aria-hidden />
 							</a>
 						)}
 						{gitHubUrl && (
@@ -63,8 +65,10 @@ export default function Project({
 								href={gitHubUrl}
 								draggable={false}
 								target='_blank'
+								rel='noopener noreferrer'
+								aria-label={`View the ${title} source on GitHub`}
 								className='bg-white py-2 px-8 h-fit text-gray-700 flex items-center justify-center rounded-full focus:scale-105 hover:scale-105 hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
-								<FaGithubSquare />
+								<FaGithubSquare aria-hidden />
 							</a>
 						)}
 					</div>
@@ -72,7 +76,7 @@ export default function Project({
 				<Image
 					src={imageUrl}
 					draggable={false}
-					alt='Project I worked on'
+					alt={`Screenshot of the ${title} project`}
 					quality={95}
 					className='absolute top-72 sm:top-8 left-1/2 sm:left-auto transform -translate-x-1/2 sm:translate-x-0 sm:-right-40 w-[28.25rem] rounded-t-lg shadow-2xl sm:group-even:-right-[initial]
 					sm:group-even:-left-40

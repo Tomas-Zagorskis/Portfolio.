@@ -44,15 +44,23 @@ export default function Contact() {
 				id='contactForm'
 				className='mt-10 flex flex-col dark:text-black'
 				action={handleEmailSend}>
+				<label htmlFor='senderEmail' className='sr-only'>
+					Your email
+				</label>
 				<input
 					type='email'
+					id='senderEmail'
 					name='senderEmail'
 					required
 					maxLength={500}
 					className='h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:outline-none dark:focus:bg-opacity-100 transition-all'
 					placeholder='Your email'
 				/>
+				<label htmlFor='message' className='sr-only'>
+					Your message
+				</label>
 				<textarea
+					id='message'
 					name='message'
 					required
 					maxLength={5000}

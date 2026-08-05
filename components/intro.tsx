@@ -94,16 +94,20 @@ export default function Intro() {
 					href='https://www.linkedin.com/in/tomas-zagorskis-8400528b'
 					draggable={false}
 					target='_blank'
+					rel='noopener noreferrer'
+					aria-label='LinkedIn profile'
 					className='bg-white p-4 text-gray-700 flex items-center justify-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
-					<BsLinkedin />
+					<BsLinkedin aria-hidden />
 				</a>
 
 				<a
 					href='https://github.com/Tomas-Zagorskis'
 					draggable={false}
 					target='_blank'
+					rel='noopener noreferrer'
+					aria-label='GitHub profile'
 					className='bg-white p-4 text-gray-700 text-[1.35rem] flex items-center justify-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
-					<FaGithubSquare />
+					<FaGithubSquare aria-hidden />
 				</a>
 			</motion.div>
 		</section>
