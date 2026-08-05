@@ -1,7 +1,5 @@
 'use client';
 
-import { Fragment } from 'react';
-
 import { projectsData } from '@/lib/data';
 import { useSectionInView } from '@/lib/hooks';
 import Project from './project';
@@ -14,10 +12,8 @@ export default function Projects() {
 		<section ref={ref} id='projects' className='scroll-mt-28 mb-28 sm:mb-0'>
 			<SectionHeading>My Projects</SectionHeading>
 			<div>
-				{projectsData.map((project, index) => (
-					<Fragment key={project.title.replace(' ', '-')}>
-						<Project {...project} />
-					</Fragment>
+				{projectsData.map(project => (
+					<Project key={project.title} {...project} />
 				))}
 			</div>
 		</section>
