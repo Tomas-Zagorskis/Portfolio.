@@ -29,6 +29,9 @@ export default function ThemeContextProvider({
 	// The inline script in the root layout already resolved the theme and set the
 	// class before paint, so read that back rather than resolving it a second time.
 	useEffect(() => {
+		// Deliberate: the class is only knowable post-hydration, and deriving it
+		// during render would mismatch the server's 'light' markup. Runs once.
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		setTheme(
 			document.documentElement.classList.contains('dark') ? 'dark' : 'light',
 		);
