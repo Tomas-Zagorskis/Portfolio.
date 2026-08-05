@@ -6,6 +6,7 @@ import {
 	SetStateAction,
 	createContext,
 	useContext,
+	useMemo,
 	useState,
 } from 'react';
 
@@ -28,14 +29,21 @@ export default function ActiveSectionContextProvider({
 }: ActiveSectionContextProviderProps) {
 	const [activeSection, setActiveSection] = useState<SectionName>('Home');
 	const [timeOfLastClick, setTimeOfLastClick] = useState(0);
+
+	// This provider sits inside ThemeContextProvider, so a theme toggle re-renders
+	// it. Without a stable value every consumer would re-render on each toggle.
+	const value = useMemo(
+		() => ({
+			activeSection,
+			setActiveSection,
+			timeOfLastClick,
+			setTimeOfLastClick,
+		}),
+		[activeSection, timeOfLastClick],
+	);
+
 	return (
-		<ActiveSectionContext.Provider
-			value={{
-				activeSection,
-				setActiveSection,
-				timeOfLastClick,
-				setTimeOfLastClick,
-			}}>
+		<ActiveSectionContext.Provider value={value}>
 			{children}
 		</ActiveSectionContext.Provider>
 	);
