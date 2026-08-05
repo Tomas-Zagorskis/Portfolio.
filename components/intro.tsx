@@ -56,9 +56,10 @@ export default function Intro() {
 				className='mb-10 mt-14 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl'
 				initial={{ opacity: 0, y: 100 }}
 				animate={{ opacity: 1, y: 0 }}>
-				<strong>Hello, I&rsquo;m Tomas.</strong> I&rsquo;m a skilled{' '}
-				<strong>full-stack developer</strong> with
-				extensive experience in <u>React</u> and <u>ASP.NET</u>.
+				<strong>Hello, I&rsquo;m Tomas.</strong> I&rsquo;m a{' '}
+				<strong>React frontend developer</strong> with ~3 years of experience
+				building <u>data-dense dashboards</u> in <u>React</u> and{' '}
+				<u>TypeScript</u>.
 			</motion.h1>
 
 			<motion.div
