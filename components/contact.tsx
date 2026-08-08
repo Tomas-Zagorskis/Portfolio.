@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import toast from 'react-hot-toast';
 
 import { sendEmail } from '@/actions/sendEmail';
@@ -10,6 +11,7 @@ import SubmitBtn from './submit-btn';
 
 export default function Contact() {
 	const { ref } = useSectionInView('Contact');
+	const formRef = useRef<HTMLFormElement>(null);
 
 	const handleEmailSend = async (formData: FormData) => {
 		const { error } = await sendEmail(formData);
@@ -19,7 +21,7 @@ export default function Contact() {
 			return;
 		}
 		toast.success('Email sent successfully!');
-		(document.getElementById('contactForm') as HTMLFormElement).reset();
+		formRef.current?.reset();
 	};
 
 	return (
@@ -41,22 +43,30 @@ export default function Contact() {
 			</p>
 
 			<form
-				id='contactForm'
+				ref={formRef}
 				className='mt-10 flex flex-col dark:text-black'
 				action={handleEmailSend}>
+				<label htmlFor='senderEmail' className='sr-only'>
+					Your email
+				</label>
 				<input
 					type='email'
+					id='senderEmail'
 					name='senderEmail'
 					required
 					maxLength={500}
-					className='h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:outline-none dark:focus:bg-opacity-100 transition-all'
+					className='h-14 px-4 rounded-lg borderBlack dark:bg-white/80 dark:outline-hidden dark:focus:bg-white transition-all'
 					placeholder='Your email'
 				/>
+				<label htmlFor='message' className='sr-only'>
+					Your message
+				</label>
 				<textarea
+					id='message'
 					name='message'
 					required
 					maxLength={5000}
-					className='h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:outline-none dark:focus:bg-opacity-100 transition-all'
+					className='h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white/80 dark:outline-hidden dark:focus:bg-white transition-all'
 					placeholder='Your message'
 				/>
 				<SubmitBtn />

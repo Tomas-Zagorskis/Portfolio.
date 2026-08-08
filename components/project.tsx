@@ -33,17 +33,17 @@ export default function Project({
 				opacity: opacityProgress,
 			}}
 			className='group mb-3 sm:mb-8 last:mb-0'>
-			<section className='bg-gray-100 max-w-[42rem] border border-black/5 overflow-hidden rounded-lg sm:pr-8 relative h-[35rem] sm:h-[22rem] sm:group-even:pl-8 hover:bg-gray-200 transition dark:text-white dark:bg-white/10 dark:hover:bg-white/20'>
-				<div className='pt-4 pb-6 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]'>
+			<section className='bg-gray-100 max-w-2xl border border-black/5 overflow-hidden rounded-lg sm:pr-8 relative h-140 sm:h-88 sm:group-even:pl-8 hover:bg-gray-200 transition dark:text-white dark:bg-white/10 dark:hover:bg-white/20'>
+				<div className='pt-4 pb-6 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-72'>
 					<h3 className='text-2xl'>{title}</h3>
 					<p className='mt-2 leading-relaxed text-gray-700 dark:text-white/70'>
 						{description}
 					</p>
 					<ul className='flex flex-wrap mt-4 gap-2 justify-center'>
-						{tags.map((tag, index) => (
+						{tags.map(tag => (
 							<li
-								key={index}
-								className='bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/80'>
+								key={tag}
+								className='bg-black/70 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/80'>
 								{tag}
 							</li>
 						))}
@@ -54,8 +54,10 @@ export default function Project({
 								href={projectUrl}
 								draggable={false}
 								target='_blank'
+								rel='noopener noreferrer'
+								aria-label={`Open the ${title} live site`}
 								className='bg-white py-2 px-8 h-fit text-gray-700 flex items-center justify-center rounded-full focus:scale-105 hover:scale-105 hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
-								<FaExternalLinkAlt />
+								<FaExternalLinkAlt aria-hidden />
 							</a>
 						)}
 						{gitHubUrl && (
@@ -63,8 +65,10 @@ export default function Project({
 								href={gitHubUrl}
 								draggable={false}
 								target='_blank'
+								rel='noopener noreferrer'
+								aria-label={`View the ${title} source on GitHub`}
 								className='bg-white py-2 px-8 h-fit text-gray-700 flex items-center justify-center rounded-full focus:scale-105 hover:scale-105 hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
-								<FaGithubSquare />
+								<FaGithubSquare aria-hidden />
 							</a>
 						)}
 					</div>
@@ -72,9 +76,9 @@ export default function Project({
 				<Image
 					src={imageUrl}
 					draggable={false}
-					alt='Project I worked on'
+					alt={`Screenshot of the ${title} project`}
 					quality={95}
-					className='absolute top-72 sm:top-8 left-1/2 sm:left-auto transform -translate-x-1/2 sm:translate-x-0 sm:-right-40 w-[28.25rem] rounded-t-lg shadow-2xl sm:group-even:-right-[initial]
+					className='absolute top-72 sm:top-8 left-1/2 sm:left-auto transform -translate-x-1/2 sm:translate-x-0 sm:-right-40 w-113 rounded-t-lg shadow-2xl sm:group-even:-right-[initial]
 					sm:group-even:-left-40
 			
 					sm:group-hover:-translate-x-3
@@ -82,9 +86,9 @@ export default function Project({
 					group-hover:-rotate-2
 					group-hover:scale-[1.04] 
 					
-					sm:group-even:group-hover:translate-x-3
-					sm:group-even:group-hover:translate-y-3
-					group-even:group-hover:rotate-2
+					sm:group-hover:group-even:translate-x-3
+					sm:group-hover:group-even:translate-y-3
+					group-hover:group-even:rotate-2
 			
 					transition-all'
 				/>

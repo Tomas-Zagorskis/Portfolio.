@@ -25,7 +25,7 @@ export default function Skills() {
 		<section
 			id='skills'
 			ref={ref}
-			className='mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-0'>
+			className='mb-28 max-w-212 scroll-mt-28 text-center sm:mb-0'>
 			<SectionHeading>My Skills</SectionHeading>
 			<ul className='flex flex-wrap justify-center gap-2 text-lg text-gray-800'>
 				{skillsData.map((skill, index) => (
@@ -36,7 +36,7 @@ export default function Skills() {
 						viewport={{ once: true }}
 						custom={index}
 						key={skill}
-						className='bg-white borderBlack hover:!scale-[1.13] hover:font-bold dark:hover:!text-white cursor-default rounded-xl px-5 py-3  dark:bg-white/10 dark:text-white/80'>
+						className='bg-white borderBlack hover:scale-[1.13]! hover:font-bold dark:hover:text-white! cursor-default rounded-xl px-5 py-3  dark:bg-white/10 dark:text-white/80'>
 						{skill}
 					</motion.li>
 				))}

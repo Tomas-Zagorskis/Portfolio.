@@ -30,7 +30,7 @@ export const sendEmail = async (formData: FormData) => {
 				message: message as string,
 				senderEmail: senderEmail as string,
 			}),
-			reply_to: senderEmail as string,
+			replyTo: senderEmail as string,
 		});
 	} catch (error) {
 		return { error: getErrorMessage(error) };

@@ -18,7 +18,7 @@ export default function Intro() {
 		<section
 			ref={ref}
 			id='home'
-			className='mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-96'>
+			className='mb-28 max-w-200 text-center sm:mb-0 scroll-mt-96'>
 			<div className='flex items-center justify-center'>
 				<div className='relative'>
 					<motion.div
@@ -47,13 +47,13 @@ export default function Intro() {
 							delay: 0.1,
 							duration: 0.7,
 						}}
-						className='text-6xl absolute bottom-[-0.5rem] right-[-1.5rem] !-scale-x-100'>
+						className='text-6xl absolute -bottom-2 -right-6 -scale-x-100!'>
 						👋🏼
 					</motion.span>
 				</div>
 			</div>
 			<motion.h1
-				className='mb-10 mt-14 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl'
+				className='mb-10 mt-14 px-4 text-2xl font-medium leading-normal! sm:text-4xl'
 				initial={{ opacity: 0, y: 100 }}
 				animate={{ opacity: 1, y: 0 }}>
 				<strong>Hello, I&rsquo;m Tomas.</strong> I&rsquo;m a{' '}
@@ -76,7 +76,7 @@ export default function Intro() {
 						setActiveSection('Contact');
 						setTimeOfLastClick(Date.now());
 					}}
-					className='group bg-gray-900 text-white select-none px-7 py-3 flex items-center justify-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition dark:border dark:border-white/10 '>
+					className='group bg-gray-900 text-white select-none px-7 py-3 flex items-center justify-center gap-2 rounded-full outline-hidden focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition dark:border dark:border-white/10 '>
 					Contact me here{' '}
 					<BsArrowRight className='opacity-70 select-none group-hover:translate-x-1 transition' />
 				</Link>
@@ -85,7 +85,7 @@ export default function Intro() {
 					href='/Zagorskis CV.pdf'
 					draggable={false}
 					download
-					className='group bg-white px-7 py-3 select-none flex items-center justify-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition borderBlack dark:bg-white/10'>
+					className='group bg-white px-7 py-3 select-none flex items-center justify-center gap-2 rounded-full outline-hidden focus:scale-110 hover:scale-110 active:scale-105 transition borderBlack dark:bg-white/10'>
 					Download CV{' '}
 					<HiDownload className='opacity-60 select-none group-hover:translate-y-1 transition' />
 				</a>
@@ -94,16 +94,20 @@ export default function Intro() {
 					href='https://www.linkedin.com/in/tomas-zagorskis-8400528b'
 					draggable={false}
 					target='_blank'
+					rel='noopener noreferrer'
+					aria-label='LinkedIn profile'
 					className='bg-white p-4 text-gray-700 flex items-center justify-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
-					<BsLinkedin />
+					<BsLinkedin aria-hidden />
 				</a>
 
 				<a
 					href='https://github.com/Tomas-Zagorskis'
 					draggable={false}
 					target='_blank'
+					rel='noopener noreferrer'
+					aria-label='GitHub profile'
 					className='bg-white p-4 text-gray-700 text-[1.35rem] flex items-center justify-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition borderBlack dark:bg-white/10 dark:text-white/60'>
-					<FaGithubSquare />
+					<FaGithubSquare aria-hidden />
 				</a>
 			</motion.div>
 		</section>

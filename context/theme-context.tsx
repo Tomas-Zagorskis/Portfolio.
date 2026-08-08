@@ -1,11 +1,12 @@
 'use client';
 
 import {
-	useState,
-	useEffect,
 	createContext,
 	ReactNode,
+	useCallback,
 	useContext,
+	useMemo,
+	useSyncExternalStore,
 } from 'react';
 
 type Theme = 'light' | 'dark';
@@ -19,40 +20,51 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
+// The `dark` class on <html> is the single source of truth: the inline script in
+// the root layout sets it before first paint, and this store just reads it back.
+// That avoids both a setState-in-effect and a hydration mismatch.
+const listeners = new Set<() => void>();
+
+function subscribe(onStoreChange: () => void) {
+	listeners.add(onStoreChange);
+	return () => {
+		listeners.delete(onStoreChange);
+	};
+}
+
+function getSnapshot(): Theme {
+	return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+}
+
+// SSR has no <html> to read; the script corrects the class before paint and
+// useSyncExternalStore re-reads the client snapshot after hydration.
+function getServerSnapshot(): Theme {
+	return 'light';
+}
+
+export function setTheme(theme: Theme) {
+	window.localStorage.setItem('theme', theme);
+	document.documentElement.classList.toggle('dark', theme === 'dark');
+	listeners.forEach(listener => listener());
+}
+
 export default function ThemeContextProvider({
 	children,
 }: ThemeContextProviderProps) {
-	const [theme, setTheme] = useState<Theme>('light');
+	const theme = useSyncExternalStore(
+		subscribe,
+		getSnapshot,
+		getServerSnapshot,
+	);
 
-	useEffect(() => {
-		const localTheme = window.localStorage.getItem('theme');
-		if (localTheme) {
-			setTheme(localTheme as Theme);
-			if (localTheme === 'dark') {
-				document.documentElement.classList.add('dark');
-			}
-		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			setTheme('dark');
-			document.documentElement.classList.add('dark');
-		}
+	const toggleTheme = useCallback(() => {
+		setTheme(getSnapshot() === 'light' ? 'dark' : 'light');
 	}, []);
 
-	const toggleTheme = () => {
-		if (theme === 'light') {
-			setTheme('dark');
-			window.localStorage.setItem('theme', 'dark');
-			document.documentElement.classList.add('dark');
-		} else {
-			setTheme('light');
-			window.localStorage.setItem('theme', 'light');
-			document.documentElement.classList.remove('dark');
-		}
-	};
+	const value = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
 
 	return (
-		<ThemeContext.Provider value={{ theme, toggleTheme }}>
-			{children}
-		</ThemeContext.Provider>
+		<ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 	);
 }
 
